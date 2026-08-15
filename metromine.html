@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Metromine</title>
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 75px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+            z-index: 1000;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+
+            font-size: 28px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            color: #ffffff;
+        }
+
+        .logo span {
+
+            color: #e63946;
+        }
+
+
+        /* NAV LINKS */
+
+        nav ul {
+
+            display: flex;
+
+            gap: 35px;
+
+            list-style: none;
+        }
+
+        nav ul li a {
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+
+            color: #e63946;
+        }
+
+
+        /* =========================================
+           HERO / BANNER
+        ========================================= */
+
+        .hero {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 50px;
+
+            padding: 120px 6% 80px;
+
+            overflow: hidden;
+
+            background: #0a0a0a;
+        }
+
+
+        /* HERO CONTENT — LEFT */
+
+        .hero-content {
+
+            flex: 1 1 38%;
+
+            max-width: 520px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* HERO BANNER IMAGE — RIGHT (more than half the page) */
+
+        .hero-image {
+
+            flex: 1 1 62%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+        }
+
+
+        .hero-image img {
+
+            width: 100%;
+
+            max-width: 760px;
+
+            display: block;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 30px 70px rgba(230, 57, 70, 0.25),
+                0 25px 60px rgba(0, 0, 0, 0.65);
+
+            transform: rotate(-2deg);
+
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+
+        .hero-image img:hover {
+
+            transform: rotate(0deg) scale(1.03);
+
+            box-shadow:
+                0 35px 90px rgba(230, 57, 70, 0.35),
+                0 25px 60px rgba(0, 0, 0, 0.7);
+        }
+
+
+        /* HERO BUTTONS ROW */
+
+        .hero-buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 18px;
+        }
+
+
+        .hero-button.secondary {
+
+            background: transparent;
+
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+
+        .hero-button.secondary:hover {
+
+            background: rgba(255, 255, 255, 0.08);
+
+            box-shadow: none;
+        }
+
+
+        /* SMALL TITLE */
+
+        .small-text {
+
+            margin-bottom: 25px;
+
+            color: #e63946;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* MAIN TITLE */
+
+        .hero h1 {
+
+            margin-bottom: 30px;
+
+            font-size: clamp(65px, 10vw, 145px);
+
+            line-height: 0.85;
+
+            letter-spacing: -6px;
+
+            font-weight: 800;
+
+            color: #ffffff;
+        }
+
+
+        .hero h1 span {
+
+            color: #e63946;
+        }
+
+
+        /* DESCRIPTION */
+
+        .hero p {
+
+            max-width: 650px;
+
+            margin-bottom: 40px;
+
+            color: #eeeeee;
+
+            font-size: 20px;
+
+            line-height: 1.7;
+        }
+
+
+        /* BUTTON */
+
+        .hero-button {
+
+            display: inline-block;
+
+            padding: 16px 34px;
+
+            border-radius: 50px;
+
+            background: #e63946;
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition: all 0.3s ease;
+        }
+
+
+        .hero-button:hover {
+
+            background: #b91c1c;
+
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 30px rgba(230, 57, 70, 0.4);
+        }
+
+
+        /* =========================================
+           ABOUT SECTION
+        ========================================= */
+
+        .about {
+
+            padding: 140px 8%;
+
+            background: #ffffff;
+
+            color: #0a0a0a;
+        }
+
+
+        /* SECTION LABEL */
+
+        .section-label {
+
+            margin-bottom: 20px;
+
+            color: #e63946;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ABOUT TITLE */
+
+        .about h2 {
+
+            margin-bottom: 60px;
+
+            font-size: clamp(45px, 7vw, 85px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+        }
+
+
+        /* ABOUT GRID */
+
+        .about-container {
+
+            max-width: 1200px;
+
+            display: grid;
+
+            grid-template-columns: 1.2fr 0.8fr;
+
+            gap: 100px;
+        }
+
+
+        /* ABOUT TEXT */
+
+        .about-text {
+
+            color: #444444;
+
+            font-size: 19px;
+
+            line-height: 1.9;
+        }
+
+
+        .about-text p {
+
+            margin-bottom: 25px;
+        }
+
+
+        .about-text strong {
+
+            color: #0a0a0a;
+        }
+
+
+        /* =========================================
+           ABOUT CARD
+        ========================================= */
+
+        .about-card {
+
+            padding: 45px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #f7f7f7;
+
+            border: 1px solid #e5e5e5;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* RED SIDE LINE */
+
+        .about-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 5px;
+            height: 100%;
+
+            background: #e63946;
+        }
+
+
+        .about-card h3 {
+
+            margin-bottom: 25px;
+
+            font-size: 28px;
+
+            color: #0a0a0a;
+        }
+
+
+        .about-card p {
+
+            color: #555555;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           HIGHLIGHTS
+        ========================================= */
+
+        .highlight {
+
+            margin-top: 80px;
+
+            padding-top: 40px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 60px;
+
+            border-top: 1px solid #dddddd;
+        }
+
+
+        .highlight-item h3 {
+
+            margin-bottom: 8px;
+
+            color: #e63946;
+
+            font-size: 35px;
+        }
+
+
+        .highlight-item p {
+
+            color: #777777;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           CONTACT SECTION
+        ========================================= */
+
+        .contact {
+
+            padding: 140px 8%;
+
+            background: #0a0a0a;
+
+            color: #ffffff;
+        }
+
+
+        .contact h2 {
+
+            margin-bottom: 60px;
+
+            font-size: clamp(45px, 7vw, 85px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+        }
+
+
+        .contact-grid {
+
+            max-width: 1200px;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 40px;
+        }
+
+
+        .contact-item {
+
+            padding: 30px 25px;
+
+            background: rgba(255, 255, 255, 0.04);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            border-radius: 16px;
+        }
+
+
+        .contact-item h3 {
+
+            margin-bottom: 12px;
+
+            color: #e63946;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .contact-item p {
+
+            color: #dddddd;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+        }
+
+
+        .contact-item a {
+
+            color: #dddddd;
+
+            text-decoration: none;
+        }
+
+
+        .contact-item a:hover {
+
+            color: #e63946;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+
+            padding: 45px 8%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: #0a0a0a;
+
+            color: #777777;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+
+        .footer-logo {
+
+            color: #ffffff;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        .footer-logo span {
+
+            color: #e63946;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+
+                flex-direction: column;
+
+                min-height: unset;
+
+                padding-top: 110px;
+            }
+
+
+            .hero-content {
+
+                max-width: 100%;
+
+                text-align: center;
+            }
+
+
+            .hero-buttons {
+
+                justify-content: center;
+            }
+
+
+            .hero-image {
+
+                width: 100%;
+
+                margin-top: 10px;
+            }
+
+
+            .hero-image img {
+
+                max-width: 100%;
+
+                width: 90%;
+
+                margin: 0 auto;
+
+                transform: rotate(0deg);
+            }
+
+
+            .about {
+
+                padding-left: 6%;
+
+                padding-right: 6%;
+            }
+
+
+            .about-container {
+
+                grid-template-columns: 1fr;
+
+                gap: 50px;
+            }
+
+
+            .contact {
+
+                padding-left: 6%;
+
+                padding-right: 6%;
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                padding: 0 5%;
+            }
+
+
+            .logo {
+
+                font-size: 23px;
+            }
+
+
+            nav ul {
+
+                gap: 18px;
+            }
+
+
+            nav ul li a {
+
+                font-size: 13px;
+            }
+
+
+            /* MOBILE HERO */
+
+            .hero {
+
+                min-height: unset;
+
+                gap: 30px;
+
+                padding: 110px 6% 60px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 70px;
+
+                letter-spacing: -4px;
+            }
+
+
+            .hero p {
+
+                font-size: 17px;
+            }
+
+
+            .hero-image img {
+
+                max-width: 100%;
+
+                width: 100%;
+
+                border-radius: 16px;
+            }
+
+
+            /* CONTACT */
+
+            .contact {
+
+                padding: 90px 6%;
+            }
+
+
+            .contact h2 {
+
+                font-size: 50px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            /* ABOUT */
+
+            .about {
+
+                padding: 90px 6%;
+            }
+
+
+            .about h2 {
+
+                font-size: 50px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .about-container {
+
+                gap: 40px;
+            }
+
+
+            .about-card {
+
+                padding: 30px;
+            }
+
+
+            /* HIGHLIGHTS */
+
+            .highlight {
+
+                gap: 30px;
+            }
+
+
+            .highlight-item h3 {
+
+                font-size: 28px;
+            }
+
+
+            /* FOOTER */
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            Metro<span>mine</span>
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="#home">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         HERO / BANNER
+    ========================================= -->
+
+    <section class="hero" id="home">
+
+
+        <div class="hero-content">
+
+
+            <div class="small-text">
+
+                Welcome to
+
+            </div>
+
+
+            <h1>
+
+                Metro<span>mine</span>
+
+            </h1>
+
+
+            <p>
+
+                Packaged drinking water with added
+                minerals — pure, mineral rich, fresh
+                and safe for life. Mining for you,
+                every single drop.
+                <br><br>
+                खूब पियो, खूब जियो.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#about" class="hero-button">
+
+                    Our Product
+
+                </a>
+
+                <a href="#contact" class="hero-button secondary">
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img src="Mine watter 2x1.5_page-0001.jpg" alt="Mine — packaged drinking water with added minerals, marketed by Metro Mine">
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         ABOUT ME
+    ========================================= -->
+
+    <section class="about" id="about">
+
+
+        <div class="section-label">
+
+            About Us
+
+        </div>
+
+
+        <h2>
+
+            Mining<br>
+
+            For You.
+
+        </h2>
+
+
+
+        <div class="about-container">
+
+
+            <!-- LEFT -->
+
+            <div class="about-text">
+
+
+                <p>
+
+                    Welcome to <strong>Metro Mine</strong>.
+
+                </p>
+
+
+                <p>
+
+                    We are the makers of <strong>mine</strong> —
+                    packaged drinking water enriched with
+                    added minerals, bottled for purity
+                    and freshness.
+
+                </p>
+
+
+                <p>
+
+                    Every bottle is pure, mineral rich,
+                    fresh and safe for life, so you can
+                    drink well and live well —
+                    खूब पियो, खूब जियो.
+
+                </p>
+
+
+                <p>
+
+                    From sourcing to sealing, we follow
+                    strict quality checks to bring clean,
+                    refreshing water to your table.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- RIGHT CARD -->
+
+            <div class="about-card">
+
+
+                <h3>
+
+                    What is mine?
+
+                </h3>
+
+
+                <p>
+
+                    <strong>mine</strong> is packaged drinking
+                    water with added minerals —
+                    Pure | Mineral Rich | Fresh |
+                    Safe for Life.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Marketed by <strong>Metro Mine</strong>,
+                    3/9, Rajesh Nagar, L.B.S. Nagar,
+                    Sakinaka, Mumbai-400072, India.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             HIGHLIGHTS
+        ===================================== -->
+
+        <div class="highlight">
+
+
+            <div class="highlight-item">
+
+                <h3>
+                    01
+                </h3>
+
+                <p>
+                    Pure
+                </p>
+
+            </div>
+
+
+            <div class="highlight-item">
+
+                <h3>
+                    02
+                </h3>
+
+                <p>
+                    Mineral Rich
+                </p>
+
+            </div>
+
+
+            <div class="highlight-item">
+
+                <h3>
+                    03
+                </h3>
+
+                <p>
+                    Fresh
+                </p>
+
+            </div>
+
+
+            <div class="highlight-item">
+
+                <h3>
+                    04
+                </h3>
+
+                <p>
+                    Safe for Life
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         CONTACT
+    ========================================= -->
+
+    <section class="contact" id="contact">
+
+
+        <div class="section-label">
+
+            Get in Touch
+
+        </div>
+
+
+        <h2>
+
+            Contact<br>
+
+            Metromine.
+
+        </h2>
+
+
+        <div class="contact-grid">
+
+
+            <div class="contact-item">
+
+                <h3>Customer Care</h3>
+
+                <p>
+                    <a href="tel:+919198050555">
+                        919 8050 555
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <h3>Email</h3>
+
+                <p>
+                    <a href="mailto:mine@metromine.in">
+                        mine@metromine.in
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <h3>Website</h3>
+
+                <p>
+                    <a href="https://www.metromine.in" target="_blank" rel="noopener">
+                        www.metromine.in
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <h3>Address</h3>
+
+                <p>
+                    3/9, Rajesh Nagar, L.B.S. Nagar,
+                    Sakinaka, Mumbai-400072, India.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer>
+
+
+        <div class="footer-logo">
+
+            Metro<span>mine</span>
+
+        </div>
+
+
+        <div>
+
+            © 2026 Metro Mine · Packaged Drinking Water
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>
